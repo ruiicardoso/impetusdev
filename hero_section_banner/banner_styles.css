@@ -1,0 +1,186 @@
+:root {
+
+--primary-color:black;
+--secondary-color:gray;
+--third-color:white;
+--font-size:clamp(14px, 20vh , 55px);
+--subtitle-size:clamp(12px, 12vh , 40px);
+--type-color-white: white;
+
+
+}
+
+
+body span {
+
+
+font-family: 'Montserrat';
+margin: 0px;
+
+}
+
+
+.container {
+    position: relative;
+display: flex;
+justify-content: center;
+
+width: 100%;
+height: 800px;
+
+overflow: hidden;
+box-sizing: border-box;
+
+}
+
+.container video {
+  overflow: hidden;
+
+    position: absolute;
+    min-width: 1425px;
+    width:100%;
+    min-height: 800px;
+    height: auto;
+    top: 0;
+    bottom: 0;
+  
+ 
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+}
+
+
+.column {
+
+    flex-direction: column;
+ 
+
+
+}
+
+.title {
+
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-size: var(--font-size);
+font-weight: 600;
+
+
+}
+
+.appear {
+
+    animation-name: appear;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
+
+.subtitle {
+
+display: flex;
+justify-content: center;
+text-align:center;
+opacity: 0%;
+animation-delay: 0.5s;
+font-size: var(--subtitle-size);
+
+}
+
+.text-structure {
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: auto;
+gap: 15px;
+color: var(--type-color-white);
+margin:20px;
+
+
+}
+
+.row {
+margin-top: 35px;   
+display: flex;
+gap: 20px;
+opacity:0%;
+animation-delay: 1s;
+justify-content: center;
+}
+
+.btn {
+    padding-left:30px;
+    padding-right:30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 55px;
+    border-radius: 45.76px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1.1px solid #fff;
+}
+
+
+.btn:hover  {
+
+background-color: var(--third-color);
+color: var(--secondary-color);
+
+}
+
+
+.description {
+
+text-align: center;
+
+}
+
+
+@keyframes appear {
+
+    from {
+        transform: translateY(-25px);
+        opacity: 0%;
+
+
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 100%;
+
+    }
+
+}
+
+@media (max-width:480px) {
+
+.row {
+    margin-top:125px;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.text-structure {
+
+    min-width: 320px;
+}
+
+.btn {
+
+    height: 85px;
+    padding-left:50px;
+    padding-right:50px;
+}
+    
+}
+
