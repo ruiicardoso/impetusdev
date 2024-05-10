@@ -1,0 +1,45 @@
+import mysql.connector
+from openpyxl import load_workbook
+
+# Conectar ao banco de dados MySQL
+conexao = mysql.connector.connect(
+    host="0.0.0.0.0..0",
+    user="fdsfsd",
+    password="sdfsdf",
+    database="sdfsdfsdf"
+)
+
+
+cursor = conexao.cursor()
+
+# Carregar o arquivo Excel
+caminho_arquivo = 'C:\composicoes_nicelabel\w2425.xlsx'
+workbook = load_workbook(filename=caminho_arquivo)
+sheet = workbook.active
+
+# Função para formatar a composição
+def formatar_composicao(composicao):
+    partes = composicao.split()
+    composicao_formatada = ""
+    for i, parte in enumerate(partes):
+        if i > 0 and not partes[i-1].endswith("%") and parte.endswith("%"):
+            composicao_formatada += "\n"  # Adiciona quebra de linha se não houver % antes do espaço
+        composicao_formatada += parte + " "
+    return composicao_formatada.strip()
+
+# Iterar sobre as linhas do Excel e atualizar o banco de dados
+for row in range(4, sheet.max_row + 1):
+    referencia = sheet[f'A{row}'].value
+    composicao = sheet[f'C{row}'].value
+    if referencia and composicao:
+        # Formatar a composição
+        composicao_formatada = formatar_composicao(composicao)
+        # Atualizar o banco de dados
+        cursor.execute("UPDATE sdfsdfsdfsd SET ComposicaoEtiqueta = %s WHERE No_2 = %s", (composicao_formatada, referencia))
+        conexao.commit()
+
+# Fechar conexão com o banco de dados
+conexao.close()
+
+# Imprimir "FIM" ao final do processamento
+print("FIM")
